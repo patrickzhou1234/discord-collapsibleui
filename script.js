@@ -11,7 +11,7 @@
 
 let collapsed = false;
 let origWidth;
-let messageWindow, channels;
+let messageWindow, channels, guildsList;
 
 setTimeout(() => {
         messageWindow = document.querySelectorAll(".chatContent-3KubbW")[0];
@@ -19,16 +19,13 @@ setTimeout(() => {
         channels.style.transition = "width 0.2s";
         messageWindow.style.transition = "width 0.2s";
         origWidth = channels.offsetWidth;
-}, 4000);
+}, 5000);
 
-window.onkeydown = (event) => {
-    if (event.keyCode == "16") {
-        if (!collapsed) {
-            channels.style.width = 0 + "px";
-            collapsed = true;
-        } else {
-            channels.style.width = origWidth + "px";
-            collapsed = false;
-        }
+window.onmousemove = (event) => {
+    guildsList = document.querySelectorAll(".guilds-2JjMmN")[0];
+    if (event.pageX>=guildsList.offsetLeft+guildsList.offsetWidth && event.pageX<=guildsList.offsetLeft+guildsList.offsetWidth+200) {
+        channels.style.width = origWidth + "px";
+    } else {
+        channels.style.width = 0 + "px";
     }
 };
