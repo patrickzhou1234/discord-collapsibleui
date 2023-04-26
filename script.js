@@ -11,13 +11,11 @@
 
 let collapsed = false;
 let origWidth;
-let messageWindow, channels, guildsList;
+let channels, guildsList;
 
 setTimeout(() => {
-        messageWindow = document.querySelectorAll(".chatContent-3KubbW")[0];
         channels = document.querySelectorAll(".sidebar-1tnWFu")[0];
         channels.style.transition = "width 0.2s";
-        messageWindow.style.transition = "width 0.2s";
         origWidth = channels.offsetWidth;
 }, 5000);
 
