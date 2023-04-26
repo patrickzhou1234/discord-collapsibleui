@@ -14,16 +14,22 @@ let origWidth;
 let channels, guildsList;
 
 setTimeout(() => {
-        channels = document.querySelectorAll(".sidebar-1tnWFu")[0];
-        channels.style.transition = "width 0.2s";
-        origWidth = channels.offsetWidth;
-}, 5000);
+    channels = document.querySelectorAll(".sidebar-1tnWFu")[0];
+    channels.style.transition = "width 0.2s";
+    origWidth = channels.offsetWidth;
+    channels.style.width = 0 + "px";
 
-window.onmousemove = (event) => {
-    guildsList = document.querySelectorAll(".guilds-2JjMmN")[0];
-    if (event.pageX>=guildsList.offsetLeft+guildsList.offsetWidth && event.pageX<=guildsList.offsetLeft+guildsList.offsetWidth+200) {
-        channels.style.width = origWidth + "px";
-    } else {
+    window.onmousemove = (event) => {
+        guildsList = document.querySelectorAll(".guilds-2JjMmN")[0];
+        if (
+            event.pageX >= guildsList.offsetLeft + guildsList.offsetWidth &&
+            event.pageX <= guildsList.offsetLeft + guildsList.offsetWidth + 20
+        ) {
+            channels.style.width = origWidth + "px";
+        }
+    };
+
+    channels.onmouseleave = () => {
         channels.style.width = 0 + "px";
-    }
-};
+    };
+}, 5000);
