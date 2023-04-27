@@ -17,17 +17,15 @@ let prevUrl = undefined;
 setInterval(() => {
     const currUrl = window.location.href.split("/")[4];
     if (currUrl != prevUrl) {
-        setTimeout(() => {
-            if (document.querySelectorAll(".container-2o3qEW").length > 0) {
-                userList = document.querySelectorAll(".container-2o3qEW")[0];
-                userList.style.transition = "width 0.2s";
-                origUserWidth = userList.offsetWidth;
+        if (document.querySelectorAll(".container-2o3qEW").length > 0) {
+            userList = document.querySelectorAll(".container-2o3qEW")[0];
+            userList.style.transition = "width 0.2s";
+            origUserWidth = userList.offsetWidth;
+            userList.style.width = 0 + "px";
+            userList.onmouseleave = () => {
                 userList.style.width = 0 + "px";
-                userList.onmouseleave = () => {
-                    userList.style.width = 0 + "px";
-                };
-            }
-        }, 500);
+            };
+        }
         prevUrl = currUrl;
     }
 }, 60);
