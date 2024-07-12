@@ -13,7 +13,8 @@ let collapsed = false;
 let origWidth;
 let channels, guildsList, userList, origUserWidth;
 
-let prevUrl = "/////", currUrl;
+let prevUrl = "/////",
+    currUrl;
 
 function userHandle() {
     userList.style.transition = "width 0.2s";
@@ -27,18 +28,20 @@ function userHandle() {
 setInterval(() => {
     currUrl = window.location.href;
     if (currUrl != prevUrl) {
-        if (currUrl.split("/")[4]==prevUrl.split("/")[4] && currUrl.split("/")[4]!="@me") {
-            prevUrl=currUrl
+        if (currUrl.split("/")[4] == prevUrl.split("/")[4] && currUrl.split("/")[4] != "@me") {
+            prevUrl = currUrl;
         } else {
-            var found=false;
+            var found = false;
             document.querySelectorAll("aside").forEach((el) => {
                 if (el.className.includes("membersWrap")) {
                     userList = el.parentElement;
-                    found=true;
+                    found = true;
                 }
-                if (el.className.includes("profilePanel")) {
+            });
+            document.querySelectorAll("div").forEach((el) => {
+                if (el.className.includes("userPanelOuter")) {
                     userList = el;
-                    found=true;
+                    found = true;
                 }
             });
             //userList = document.querySelectorAll(".container-2o3qEW")[0];
@@ -69,15 +72,17 @@ setTimeout(() => {
     channels.style.width = 0 + "px";
     var foundUserList = false;
     document.querySelectorAll("aside").forEach((el) => {
-            if (el.className.includes("membersWrap")) {
-                userList = el.parentElement;
-                foundUserList=true;
-            }
-            if (el.className.includes("profilePanel")) {
-                userList = el;
-                foundUserList=true;
-            }
-        });
+        if (el.className.includes("membersWrap")) {
+            userList = el.parentElement;
+            foundUserList = true;
+        }
+    });
+    document.querySelectorAll("div").forEach((el) => {
+        if (el.className.includes("userPanelOuter")) {
+            userList = el;
+            foundUserList = true;
+        }
+    });
     if (foundUserList) {
         userHandle();
     }
@@ -87,15 +92,17 @@ setTimeout(() => {
                 guildsList = el;
             }
         });
-        var foundUserList=false;
+        var foundUserList = false;
         document.querySelectorAll("aside").forEach((el) => {
             if (el.className.includes("membersWrap")) {
                 userList = el.parentElement;
-                foundUserList=true;
+                foundUserList = true;
             }
-            if (el.className.includes("profilePanel")) {
+        });
+        document.querySelectorAll("div").forEach((el) => {
+            if (el.className.includes("userPanelOuter")) {
                 userList = el;
-                foundUserList=true;
+                foundUserList = true;
             }
         });
         //guildsList = document.querySelectorAll(".guilds-2JjMmN")[0];
