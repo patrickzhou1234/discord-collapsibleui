@@ -19,6 +19,7 @@ let prevUrl = "/////",
 function userHandle() {
     userList.style.transition = "width 0.2s";
     origUserWidth = userList.offsetWidth;
+    userList.style.minWidth = "unset";
     userList.style.width = 0 + "px";
     userList.onmouseleave = () => {
         userList.style.width = 0 + "px";
@@ -39,25 +40,17 @@ setInterval(() => {
                 }
             });
             document.querySelectorAll("div").forEach((el) => {
-                if (el.className.includes("userPanelOuter")) {
+                if (el.className.includes("userPanelOuter") || el.className.includes("membersWrap")) {
                     userList = el;
                     found = true;
                 }
             });
-            //userList = document.querySelectorAll(".container-2o3qEW")[0];
             if (found) {
                 userHandle();
             }
             prevUrl = currUrl;
         }
     }
-    /*
-    if (currUrl[4] == "@me" && currUrl[5] != prevUrl[5] && document.querySelectorAll(".profilePanel-2VBkh8").length > 0) {
-        userList = document.querySelectorAll(".profilePanel-2VBkh8")[0];
-        userHandle();
-        prevUrl = currUrl;
-    }
-    */
 }, 60);
 
 setTimeout(() => {
@@ -66,7 +59,6 @@ setTimeout(() => {
             channels = el;
         }
     });
-    //channels = document.querySelectorAll(".sidebar-1tnWFu")[0];
     channels.style.transition = "width 0.2s";
     origWidth = channels.offsetWidth;
     channels.style.width = 0 + "px";
@@ -78,7 +70,7 @@ setTimeout(() => {
         }
     });
     document.querySelectorAll("div").forEach((el) => {
-        if (el.className.includes("userPanelOuter")) {
+        if (el.className.includes("userPanelOuter") || el.className.includes("membersWrap")) {
             userList = el;
             foundUserList = true;
         }
@@ -100,7 +92,7 @@ setTimeout(() => {
             }
         });
         document.querySelectorAll("div").forEach((el) => {
-            if (el.className.includes("userPanelOuter")) {
+            if (el.className.includes("userPanelOuter") || el.className.includes("membersWrap")) {
                 userList = el;
                 foundUserList = true;
             }
