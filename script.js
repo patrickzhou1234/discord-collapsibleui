@@ -59,9 +59,10 @@ setTimeout(() => {
             channels = el;
         }
     });
-    channels.style.transition = "width 0.2s";
+    //channels.style.transition = "width 0.2s";
     origWidth = channels.offsetWidth;
-    channels.style.width = 0 + "px";
+    //channels.style.width = 0 + "px";
+    channels.setAttribute('style', 'transition: width 0.2s;width:0px !important;');
     var foundUserList = false;
     document.querySelectorAll("aside").forEach((el) => {
         if (el.className.includes("membersWrap")) {
@@ -107,6 +108,6 @@ setTimeout(() => {
     };
 
     channels.onmouseleave = () => {
-        channels.style.width = 0 + "px";
+        channels.setAttribute('style', 'transition: width 0.2s;width:0px !important;');
     };
 }, 5000);
