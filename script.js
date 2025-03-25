@@ -40,7 +40,7 @@ setInterval(() => {
                 }
             });
             document.querySelectorAll("div").forEach((el) => {
-                if (el.className.includes("userPanelOuter") || el.className.includes("membersWrap")) {
+                if (el.className.includes("outer") || el.className.includes("membersWrap")) {
                     userList = el;
                     found = true;
                 }
@@ -55,7 +55,7 @@ setInterval(() => {
 
 setTimeout(() => {
     document.querySelectorAll("div").forEach((el) => {
-        if (el.className.includes("sidebar")) {
+        if (el.className.includes("sidebarList")) {
             channels = el;
         }
     });
@@ -71,7 +71,7 @@ setTimeout(() => {
         }
     });
     document.querySelectorAll("div").forEach((el) => {
-        if (el.className.includes("userPanelOuter") || el.className.includes("membersWrap")) {
+        if (el.className.includes("outer") || el.className.includes("membersWrap")) {
             userList = el;
             foundUserList = true;
         }
@@ -93,7 +93,7 @@ setTimeout(() => {
             }
         });
         document.querySelectorAll("div").forEach((el) => {
-            if (el.className.includes("userPanelOuter") || el.className.includes("membersWrap")) {
+            if (el.className.includes("outer") || el.className.includes("membersWrap")) {
                 userList = el;
                 foundUserList = true;
             }
